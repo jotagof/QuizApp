@@ -17,21 +17,21 @@ app.get('/', (req, res) => {
 
 app.post("/api/login", async (req, res) => {
 
-    try{
+    try {
         const user = await User.findOne({
             username: req.body.username,
             password: req.body.password
         })
-
-        if (user){
-            res.json({ status: "ok" , user: true})
-        }else{
-            res.json({ status: "error" , user: false})
+        console.log(user)
+        if (user) {
+            res.json({ status: "ok", user: { username: user.username, name: user.name } })
+        } else {
+            res.json({ status: "error", user: false })
         }
-    }catch (error){
+    } catch (error) {
         res.json({ status: "error" })
     }
-    
+
 })
 
 app.post("/api/register", async (req, res) => {
@@ -43,12 +43,11 @@ app.post("/api/register", async (req, res) => {
         })
         res.json({ status: "ok" })
     } catch (error) {
-        res.json({ status: "error" })        
+        res.json({ status: "error" })
     }
 })
 
 app.listen(5000, () => {
     console.log('first2')
-
 })
 

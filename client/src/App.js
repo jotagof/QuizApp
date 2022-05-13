@@ -1,17 +1,12 @@
-import Login from "./components/login"
-import './App.css';
+import AuthProvider from './auth/AuthProvider';
+import AppRouter from './routers/AppRouter'
 
 function App() {
     return (
-        <div className="App">
-            <nav className="navbar navbar-light bg-light">
-                <div className="container-fluid">
-                    <span className="navbar-brand mb-0 h1">Navbar</span>
-                </div>
-            </nav>
-            <div className="container">
-                <Login />
-            </div>
+        <div>
+            <AuthProvider>
+                <AppRouter />
+            </AuthProvider>
         </div>
     );
 }
